@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats5 | violation distribution</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet"> 
+    <link href="css/animate.min.css" rel="stylesheet"> 
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+	    <script src="js/html5shiv.js"></script>
+	    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+</head><!--/head-->
+
+<body>
+	<header id="header">      
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <h1><img src="images/logo.jpg" alt="logo" style="width:500px;height:100px;margin-left:105px;"></h1>
+                    </a>   
+                </div>
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index.html">Home</a></li>                       
+                        <li class="active"><a href="stat1.html">Stat1</a></li>  
+                        <li class="active"><a href="stat2.html">Stat2</a></li>  
+                        <li class="active"><a href="stat3.html">Stat3</a></li>
+                        <li class="active"><a href="stat4.html">Stat4</a></li>
+                        <li class="active"><a href="stat5.html">Stat5</a></li>                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+
+
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+             <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">What are the most common violations in LA restaurants?</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    <!--/#action-->
+
+    <section id="portfolio-information" class="padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                        <div id="main" style="width: 1200px;height:700px;"></div>
+                        <script type="text/javascript">
+                        var myChart = echarts.init(document.getElementById('main'));
+                        
+                        option = {
+                            title : {
+                                text: 'Violation Distribution',
+                                x:'center'
+                            },
+                            tooltip : {
+                                trigger: 'item',
+                                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                            },
+                            legend: {
+                                x : 'center',
+                                y : 'bottom',
+                                data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+                            },
+                            toolbox: {
+                                show : true,
+                                feature : {
+                                    mark : {show: true},
+                                    dataView : {show: true, readOnly: false},
+                                    magicType : {
+                                        show: true,
+                                        type: ['pie', 'funnel']
+                                    },
+                                    restore : {show: true},
+                                    saveAsImage : {show: true}
+                                }
+                            },
+                            calculable : true,
+                            series : [
+                                {
+                                    name:'violations distribution',
+                                    type:'pie',
+                                    radius : [40, 250],
+                                    center : ['50%', '50%'],
+                                    roseType : 'radius',
+                                    label: {
+                                        normal: {
+                                            show: false
+                                        },
+                                        emphasis: {
+                                            show: true
+                                        }
+                                    },
+                                    lableLine: {
+                                        normal: {
+                                            show: false
+                                        },
+                                        emphasis: {
+                                            show: true
+                                        }
+                                    },
+                                    data:[{value: 8267,name: '# 01a. Demonstration of knowledge'}, 
+                                    {value: 17178,name: '# 01b. Food safety certification'}, 
+                                    {value: 36, name: '# 02. Communicable disease; reporting_ restrictions & exclusions'}, 
+                                    {value: 32, name: '# 03. No discharge from eyes_ nose_ and mouth'},
+                                    {value: 3562, name:'# 04. Proper eating_ drinking_ or tobacco use'}, 
+                                    {value: 5119, name: '# 05. Hands clean and properly washed; gloves used properly'},
+                                    {value: 35572, name: '# 06. Adequate handwashing facilities supplied & accessible'}, 
+                                    {value: 42511, name: '# 07. Proper hot and cold holding temperatures'}, 
+                                    {value: 2, name: '# 08. Proper hot and cold holding temperatures'}, 
+                                    {value: 5292, name: '# 08. Time as a public health control; procedures & records'}, 
+                                    {value: 8046, name: '# 09. Proper cooling methods'},
+                                    {value: 74, name: '# 10. Proper cooking time & temperatures'},
+                                    {value: 762, name: '# 11. Proper reheating procedures for hot holding'},
+                                    {value: 23, name: '# 12. Returned and reservice food'},
+                                    {value: 4937, name: '# 13. Food in good condition_ safe and unadulterated'}, 
+                                    {value: 38802, name: '# 14. Food contact surfaces: clean and sanitized'},
+                                    {value: 2, name: '# 15. Food contact surfaces: clean and sanitized'},
+                                    {value: 707, name: '# 15. Food obtained from approved source'},
+                                    {value: 1212, name: '# 16. Compliance with shelf stock tags_ condition_ displayed'},
+                                    {value: 42, name: '# 17. Compliance with Gulf Oyster Regulations'},
+                                    {value: 268, name: '# 18. Compliance with variance_ specialized process_ & HACCP Plan'},
+                                    {value: 834, name: '# 19. Consumer advisory provided for raw or undercooked foods'},
+                                    {value: 1, name: '# 20. Licensed health care facilities/public & private schools; prohibited foods not offered'},
+                                    {value: 8430, name: '# 21a. Hot Water Available'}, 
+                                    {value: 2561, name: '# 21b. Water available'}, 
+                                    {value: 1763, name: '# 22. Sewage and wastewater properly disposed'},
+                                    {value: 32734, name: '# 23. No rodents_ insects_ birds_ or animals'}, 
+                                    {value: 875, name: '# 24. Person in charge present and performs duties'}, 
+                                    {value: 12409, name: '# 25. Personal cleanliness and hair restraints'}, 
+                                    {value: 8078, name: '# 26. Approved thawing methods used_ frozen food maintained frozen'}, 
+                                    {value: 18154, name: '# 27. Food separated and protected'}, 
+                                    {value: 215, name: '# 28. Fruits and vegetables washed as required'}, 
+                                    {value: 19903, name: '# 29. Toxic substances properly identified_ stored_ used'}, 
+                                    {value: 40213, name: '# 30. Food properly stored; food storage containers identified'}, 
+                                    {value: 648, name: '# 31. Consumer self service facilities properly constructed and maintained'},
+                                    {value: 1, name: '# 31. Food properly stored; food storage containers identified'},
+                                    {value: 6548, name: '# 32. Food properly labeled & honestly presented'}, 
+                                    {value: 103926, name: '# 33. Nonfood-contact surfaces clean and in good repair'}, 
+                                    {value: 1, name: '# 34. Nonfood-contact surfaces clean and in good repair'},
+                                    {value: 20760, name: '# 34. Warewashing facilities: Adequate_ maintained_ properly use_ test strips available'}, 
+                                    {value: 83417, name: '# 35. Equipment/Utensils - approved; installed; clean; good repair_ capacity'}, 
+                                    {value: 5, name: '# 36. Equipment/utensils approved; installed; clean; good repair_ capacity'},
+                                    {value: 52451, name: '# 36. Equipment_ utensils and linens: storage and use'},
+                                    {value: 50165, name: '# 37. Adequate ventilation and lighting; designated areas_ use'}, 
+                                    {value: 1, name: '# 38. Adequate ventilation and lighting; designated areas_ use'},
+                                    {value: 11530, name: '# 38. Thermometers provided and accurate'}, 
+                                    {value: 36336, name: '# 39. Wiping cloths: properly used and stored'}, 
+                                    {value: 52977, name: '# 40. Plumbing: Plumbing in good repair_ proper backflow devices'},
+                                    {value: 4749, name: '# 41. Garbage and refuse properly disposed; facilities maintained'},
+                                    {value: 1, name: '# 41. Plumbing; fixures_ backflow devices_ drainage'}, 
+                                    {value: 17266, name: '# 42. Toilet facilities: properly constructed_ supplied_ cleaned'},
+                                    {value: 45496, name: '# 43. Premises; personal/cleaning items; vermin-proofing'}, 
+                                    {value: 106608, name: '# 44. Floors_ walls and ceilings: properly built_ maintained in good repair and clean'},
+                                    {value: 5, name: '# 45. Floors_ walls and ceilings: properly built_ maintained in good repair and clean'}, 
+                                    {value: 482, name: '# 45. Sleeping quarters'}, 
+                                    {value: 17399, name: '# 46. Signs posted; last inspection report available'},
+                                    {value: 5778, name: '# 47. Permits Available'},
+                                    {value: 706, name: '# 48. Plan Review required for new or remodel construction'},
+                                    {value: 50, name: '# 49. Samples Collected'}, 
+                                    {value: 8966, name: '# 50. Impoundment of unsanitary equipment or food'},
+                                    {value: 2987, name: '# 51. Permit Suspension'},
+                                    {value: 2413, name: '# 52. Multiple Major Critical Violations / Increased Risk to Public Health'},
+                                    {value: 1, name: 'Building rodent proof'},
+                                    {value: 1, name: 'Ceiling constructed of smooth_ durable_ and non-absorbent material'},
+                                    {value: 2, name: 'Ceiling maintained clean'}, 
+                                    {value: 3, name: 'Ceiling maintained in good repair'},
+                                    {value: 1, name: 'Compliance with shellfish tag requirements'},
+                                    {value: 8, name: 'Equipment_ Shelving_ Cabinets: approved_ maintained clean and in good repair'},
+                                    {value: 12, name: 'Floor maintained clean'},
+                                    {value: 1, name: 'Floor maintained in good repair'},
+                                    {value: 2, name: 'Fly Breeding'},
+                                    {value: 5, name: 'Food elevated'},
+                                    {value: 4, name: 'Food properly labeled'},
+                                    {value: 2, name: 'Food storage separated and protected'},
+                                    {value: 1, name: 'Food storage space'},
+                                    {value: 2, name: 'Garbage / Rubbish receptacles maintained clean and sanitary'},
+                                    {value: 1, name: 'Hand sink in good repair'},
+                                    {value: 3, name: 'Hand sink maintained clean / sanitary'},
+                                    {value: 3, name: 'Hot and cold water available'},
+                                    {value: 1, name: 'Permit Available'},
+                                    {value: 1, name: 'Permits Available'},
+                                    {value: 5, name: 'Plumbing approved and maintained in good repair.'},
+                                    {value: 1, name: 'Premises maintained clean and sanitary'},
+                                    {value: 1, name: 'Proper hot and cold holding temperatures'},
+                                    {value: 1, name: 'Proper storage or use of hazardous materials'},
+                                    {value: 2, name: 'Storage of materials 18 inches above the floor.'},
+                                    {value: 1, name: 'Toilet in good repair'},
+                                    {value: 1, name: 'Toilet maintained clean / sanitary'},
+                                    {value: 1, name: 'Toilet room floor / walls / ceiling clean'},
+                                    {value: 1, name: 'Toilet room floor / walls / ceiling in good repair'}, 
+                                    {value: 1, name: 'Toilet room well ventilated'},
+                                    {value: 1, name: 'Wall(s) constructed of approved material'},
+                                    {value: 3, name: 'Wall(s) maintained clean'},
+                                    {value: 3, name: 'Wall(s) maintained in good repair'}, 
+                                    {value: 7, name: 'Walls_ Floors_ Ceilings: approved_ maintained clean and in good repair'}
+                                ]
+                                }
+                            ]
+                        };
+
+                        myChart.setOption(option);
+                        </script>
+                </div>
+                
+            </div>
+            <div class="col">
+                <div class="project-name overflow">
+                    <h2 class="bold" style="font-family: Times New Roman; font-size:30px;">Data Explanation</h2>
+                    <ul class="nav navbar-nav navbar-default">
+                        <li style="font-size:10px;"><i class="fa fa-clock-o"></i>March 10,2019</a></li>
+                    </ul>
+                </div>
+                <div class="project-info overflow">
+                    <h3 style="font-family: Times New Roman; font-size:20px;">Violation Distribution</h3>
+                    <p style="font-family: Times New Roman; font-size:20px;">The chart shows all of the categories of exsited violation names, and shows the percentage of each violation &divide; total violations.</p>
+                        <ul style="font-family: Times New Roman; font-size:20px;">
+                            <caption>Top 3 violations are :</caption>
+                            <li type="circle">(11.22%) Floors_walls and ceilings are not properly built/maintained in good repair/clean status.</li>
+                            <li type="circle">(10.94%) Nonfood-contact surfaces are not in good repair/clean status.</li>
+                            <li type="circle">(8.78%) Equipment/utensils are not approved/installed/clean/good repair capacity. </li>
+                        </ul>
+                    <p style="font-family: Times New Roman; font-size:20px;">Suggestions are stated below:</p>
+                    <ul class="elements" style="font-family: Times New Roman; font-size:20px;">
+                        <li><i class="fa fa-angle-right"></i> For government use, it helps to concentrate on the most common violations and further solutions of these aspects are needed in urgent.</li>
+                        <li><i class="fa fa-angle-right"></i> For commercial use, it helps to provide a general understanding of violations and to care more about the most common issues that may exists in their restaurants.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#portfolio-information-->
+
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="testimonial bottom">
+                        <h2 id='needhelp'>Need help?</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="https://www.lacounty.gov/residents/health/restaurant-inspections-rating/" target='_blank'><img src="images/home/profile1.jpg" width=100% height=100% alt=""></a>
+                            </div>
+                         </div>
+                    </div> 
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Contacts</h2>
+                        <p>
+                            Aiyuan Li<br/>
+                            Jiaqi Xiao<br/>
+                            Yinhao He<br/>
+                            Zhihui Guo
+                        </p>
+
+                        <h2>Address</h2>
+                        <address>
+                        University of California, Irvine <br> 
+                        Irvine, CA 92697 <br> 
+                        United States of America <br> 
+                        949-824-5011
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>Send a message</h2>
+                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+                            </div>                        
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; IN4MATX172-team2 2019. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lightbox.min.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>  
+</body>
+</html>

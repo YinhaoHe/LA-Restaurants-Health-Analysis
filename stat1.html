@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- including ECharts file -->
+    <script src="js/echarts.min.js"></script>
+    <title>Stats1 | numbers of facilities visted per day</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lightbox.min.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!--/head-->
+
+<body>
+    <header id="header">
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <h1><img src="images/logo.jpg" alt="logo" style="width:500px;height:100px;margin-left:105px;"></h1>
+                </a>
+            </div>
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="stat1.html">Stat1</a></li>
+                        <li class="active"><a href="stat2.html">Stat2</a></li>
+                        <li class="active"><a href="stat3.html">Stat3</a></li>
+                        <li class="active"><a href="stat4.html">Stat4</a></li>
+                        <li class="active"><a href="stat5.html">Stat5</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+
+
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+            <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">How many restaurants do inspectors visit everyday?</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#action-->
+
+    <section id="portfolio-information" class="padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="main" style="width: 1200px;height:600px;"></div>
+                    <script type="text/javascript">
+                    var myChart = echarts.init(document.getElementById('main'));
+                    myChart.showLoading();
+                    $.get('./data/res1.json', function (data) {
+                        myChart.hideLoading();
+                        myChart.setOption(option = {
+                            title: {
+                                text: 'Number of facilities visited per day'
+                            },
+                            tooltip: {
+                                trigger: 'axis'
+                            },
+                            xAxis: {
+                                data: data.map(function (item) {
+                                    return item[0];
+                                })
+                            },
+                            yAxis: {
+                                splitLine: {
+                                    show: false
+                                }
+                            },
+                            toolbox: {
+                                left: 'center',
+                                feature: {
+                                    dataZoom: {
+                                        yAxisIndex: 'none'
+                                    },
+                                    restore: {},
+                                    saveAsImage: {}
+                                }
+                            },
+                            dataZoom: [{
+                                startValue: '2016-06-01'
+                            }, {
+                                type: 'inside'
+                            }],
+                            visualMap: {
+                                top: 10,
+                                right: 10,
+                                pieces: [{
+                                    gt: 0,
+                                    lte: 50,
+                                    color: '#096'
+                                }, {
+                                    gt: 50,
+                                    lte: 100,
+                                    color: '#ffde33'
+                                }, {
+                                    gt: 100,
+                                    lte: 150,
+                                    color: '#ff9933'
+                                }, {
+                                    gt: 150,
+                                    lte: 200,
+                                    color: '#cc0033'
+                                }, {
+                                    gt: 200,
+                                    lte: 300,
+                                    color: '#660099'
+                                }, {
+                                    gt: 300,
+                                    color: '#7e0023'
+                                }],
+                                outOfRange: {
+                                    color: '#999'
+                                }
+                            },
+                            series: {
+                                name: 'Number of facilities visited per day',
+                                type: 'line',
+                                data: data.map(function (item) {
+                                    return item[1];
+                                }),
+                                markLine: {
+                                    silent: true,
+                                    data: [{
+                                        yAxis: 50
+                                    }, {
+                                        yAxis: 100
+                                    }, {
+                                        yAxis: 150
+                                    }, {
+                                        yAxis: 200
+                                    }, {
+                                        yAxis: 300
+                                    }]
+                                }
+                            }
+                        });
+                    });
+                    </script>
+                </div>
+            </div>
+            <div class="col">
+                <div class="project-name overflow">
+                    <h2 class="bold" style="font-family: Times New Roman;font-size:30px;">Data Explanation</h2>
+                    <ul class="nav navbar-nav navbar-default">
+                        <li style="font-size:10px;"><i class="fa fa-clock-o"></i>March 10,2019</a></li>
+                    </ul>
+                </div>
+                <div class="project-info overflow">
+                    <h3 style="font-family: Times New Roman; font-size:20px;">Number of facilities visited per day</h3>
+                    <p style="font-family: Times New Roman;font-size:20px;">Start from 2016-06-01 to 2018-12-31, the data shows how many restaurants do inspectors visited in LA every day. The number in each column only shows the total amounts of restaurants in different health categories. From the flow of the chart, there seems to have an unstable number of inspections completed every day. Suggestions are stated below:</p>
+                    <ul class="elements" style="font-family: Times New Roman; font-size:20px;">
+                        <li><i class="fa fa-angle-right" ></i> For government use, it helps to identify the overall workload done by inspectors per day.</li>
+                        <li><i class="fa fa-angle-right"></i> For commercial use, it helps to identify when to prepare for the upcoming inspections.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#portfolio-information-->
+
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="testimonial bottom">
+                        <h2 id='needhelp'>Need help?</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="https://www.lacounty.gov/residents/health/restaurant-inspections-rating/" target='_blank'><img src="images/home/profile1.jpg" width=100% height=100% alt=""></a>
+                            </div>
+                         </div>
+                    </div> 
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Contacts</h2>
+                        <p>
+                            Aiyuan Li<br/>
+                            Jiaqi Xiao<br/>
+                            Yinhao He<br/>
+                            Zhihui Guo
+                        </p>
+
+                        <h2>Address</h2>
+                        <address>
+                        University of California, Irvine <br> 
+                        Irvine, CA 92697 <br> 
+                        United States of America <br> 
+                        949-824-5011
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>Send a message</h2>
+                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+                            </div>                        
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; IN4MATX172-team2 2019. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+</body>
+</html>

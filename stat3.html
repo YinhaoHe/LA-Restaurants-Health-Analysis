@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats3 | average score per facility type</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!--/head-->
+
+<body>
+    <header id="header">
+        <div class="navbar navbar-inverse" role="banner">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <h1><img src="images/logo.jpg" alt="logo" style="width:500px;height:100px;margin-left:105px;"></h1>
+                </a>
+            </div>
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="stat1.html">Stat1</a></li>
+                        <li class="active"><a href="stat2.html">Stat2</a></li>
+                        <li class="active"><a href="stat3.html">Stat3</a></li>
+                        <li class="active"><a href="stat4.html">Stat4</a></li>
+                        <li class="active"><a href="stat5.html">Stat5</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/#header-->
+
+
+    <section id="page-breadcrumb">
+        <div class="vertical-center sun">
+            <div class="container">
+                <div class="row">
+                    <div class="action">
+                        <div class="col-sm-12">
+                            <h1 class="title">What is the average health score based on restaurant types?</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#action-->
+
+    <section id="portfolio-information" class="padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="main" style="width: 1200px;height:700px;"></div>
+                    <script type="text/javascript">
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    var option = {
+                        title: {
+                            text: 'Average score per facility type'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            containLabel: true
+                        },
+                        xAxis: {
+                            type: 'value',
+                            boundaryGap: [0, 0.01],
+                            min: 85
+                        },
+                        yAxis: {
+                            type: 'category',
+                            data: ['CATERER (0-999 SQ. FT.)',
+                                'CATERER (1_000-1_999 SQ. FT.)',
+                                'FOOD MARKET WHOLESALE',
+                                'FOOD MKT RETAIL (1-1_999 SF) LOW RISK',
+                                'FOOD MKT RETAIL (1-1_999 SF) MODERATE RISK',
+                                'FOOD MKT RETAIL (1-1_999 SF) HIGH RISK',
+                                'FOOD MKT RETAIL (2_000+ SF) LOW RISK',
+                                'FOOD MKT RETAIL (2_000+ SF) MODERATE RISK',
+                                'FOOD MKT RETAIL (2_000+ SF) HIGH RISK',
+                                'FOOD PROCESSING WHOLESALE (2_000-5_999 SF)',
+                                'FOOD VEHICLE COMMISSARY (0-10)',
+                                'FOOD WAREHOUSE (1-4_999) SQ. FT.',
+                                'FOOD WAREHOUSE (5_000 + ) SQ. FT.',
+                                'LIC HTH CARE FOOD FAC (0-1999 SF) MODERATE RISK',
+                                'LIC HTH CARE FOOD FAC (0-1999 SF) HIGH RISK',
+                                'LIC HTH CARE FOOD FAC (10_000+ SF) HIGH RISK',
+                                'LIC HTH CARE FOOD FAC (2000-3999 SF)HIGH RISK',
+                                'LIC HTH CARE FOOD FAC (4000-9999 SF)HIGH RISK',
+                                'PC - COMMISSARY', 
+                                'PRIVATE SCHOOL CAFETERIA',
+                                'RESTAURANT (0-30) SEATS LOW RISK',
+                                'RESTAURANT (0-30) SEATS MODERATE RISK',
+                                'RESTAURANT (0-30) SEATS HIGH RISK',
+                                'RESTAURANT (151 + ) SEATS LOW RISK',
+                                'RESTAURANT (151 + ) SEATS MODERATE RISK',
+                                'RESTAURANT (151 + ) SEATS HIGH RISK',
+                                'RESTAURANT (31-60) SEATS LOW RISK',
+                                'RESTAURANT (31-60) SEATS MODERATE RISK',
+                                'RESTAURANT (31-60) SEATS HIGH RISK',
+                                'RESTAURANT (61-150) SEATS LOW RISK',
+                                'RESTAURANT (61-150) SEATS MODERATE RISK',
+                                'RESTAURANT (61-150) SEATS HIGH RISK',
+                                'SWAP MEET PREPACKAGED FOOD STAND',
+                                'WHOLESALE FOOD COMPLEX'
+                            ]
+
+                        },
+                        series: [{
+                            name: "Average score per facility type",
+                            type: 'bar',
+                            data: [94.0, 92.7, 97.8, 95.9, 94.5, 94.5, 95.4, 94.9,  92.7, 85.8, 99.0, 100.0, 100.0, 98.7, 98.8, 93.7, 95.2, 94.0, 99.0, 88.7, 95.8, 94.5, 93.2, 96.0, 94.6, 93.1, 95.4, 94.6, 92.7, 95.6, 94.8, 92.7, 99.0, 96.0]
+                        }]
+                    };
+                    myChart.setOption(option);
+                    </script>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="project-name overflow">
+                    <h2 class="bold" style="font-family: Times New Roman; font-size:30px;">Data Explanation</h2>
+                    <ul class="nav navbar-nav navbar-default">
+                        <li style="font-size:10px;"><i class="fa fa-clock-o"></i>March 10,2019</a></li>
+                    </ul>
+                </div>
+                <div class="project-info overflow">
+                    <h3 style="font-family: Times New Roman; font-size:20px;">Average score per facility type</h3>
+                    <p style="font-family: Times New Roman; font-size:20px;">The chart shows numbers of average health scores in different facility types. Permits in the restaurants are now based on risk levels, which are determined by type of food and preparation steps. In general, the more complex the menu/preparation of foods are, the higher the risk level.</p>
+                        <ul style="font-family: monospace; font-size:20px;">
+                            <caption>Some Explainations:</caption>
+                            <li type="circle">(minimum number-maximum number) --> It indicates the sizes of the restaurant. For example,  "RESTAURANT(61-150)SEATS HIGH RISK", it refers to the restaurants which have 61-150 seats in their store areas, and serving high risk foods.</li>
+                            <li type="circle">Low Risk --> Restaurants are permitted to sell limited preparation steps of foods, such as hot dogs, heating of individually pre-packaged ready-to-eat foods without opening of the package.These types of operations are inspected once a year.</li>
+                            <li type="circle">Moderate Risk --> Restaurants are permitted to receive, store, prepare, cold holding, and serve foods, such as baking bread, frying donuts. These operations receive 1 routine inspection and 1 educational visit each year with the exception of schools which receive 2 routine inspections.</li>
+                            <li type="circle">High Risk --> Restaurants are permitted to do operations with complex food preparation steps, such as cooking, cutting, hot holding. These operations receive 2 routine inspections and 1 educational visit each year.</li>
+                        </ul>
+                    <p style="font-family: Times New Roman; font-size:20px;">Suggestions are stated below:</p>
+                    <ul class="elements" style="font-family: Times New Roman; font-size:20px;">
+                        <li><i class="fa fa-angle-right"></i> For government use, it helps to compare health scores between different facility types and find out which type of restaurants need to be focused and strengthened. </li>
+                        <li><i class="fa fa-angle-right"></i> For commercial use, it helps to raise people's attention on the restaurants health scores, and to pay more attention on those with low grades, such as private school cafeteria does not have relatively high health score compared to others.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/#portfolio-information-->
+
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center bottom-separator">
+                    <img src="images/home/under.png" class="img-responsive inline" alt="">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="testimonial bottom">
+                        <h2 id='needhelp'>Need help?</h2>
+                        <div class="media">
+                            <div class="pull-left">
+                                <a href="https://www.lacounty.gov/residents/health/restaurant-inspections-rating/" target='_blank'><img src="images/home/profile1.jpg" width=100% height=100% alt=""></a>
+                            </div>
+                         </div>
+                    </div> 
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="contact-info bottom">
+                        <h2>Contacts</h2>
+                        <p>
+                            Aiyuan Li<br/>
+                            Jiaqi Xiao<br/>
+                            Yinhao He<br/>
+                            Zhihui Guo
+                        </p>
+
+                        <h2>Address</h2>
+                        <address>
+                        University of California, Irvine <br> 
+                        Irvine, CA 92697 <br> 
+                        United States of America <br> 
+                        949-824-5011
+                        </address>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="contact-form bottom">
+                        <h2>Send a message</h2>
+                        <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="Email Id">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your text here"></textarea>
+                            </div>                        
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="copyright-text text-center">
+                        <p>&copy; IN4MATX172-team2 2019. All Rights Reserved.</p>
+                        <p>Designed by <a target="_blank" href="http://www.themeum.com">Themeum</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lightbox.min.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
