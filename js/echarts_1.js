@@ -5,7 +5,7 @@ $.get('data/res1.json', function (data) {
         },
         tooltip: {
             trigger: 'axis'
-        },
+        }, 
         xAxis: {
             data: data.map(function (item) {
                 return item[0];
