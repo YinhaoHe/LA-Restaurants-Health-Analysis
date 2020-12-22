@@ -12,7 +12,7 @@ $.get('data/res1.json', function (data) {
             })
         },
         yAxis: {
-            splitLine: {
+            splitLine: { 
                 show: false
             }
         },
